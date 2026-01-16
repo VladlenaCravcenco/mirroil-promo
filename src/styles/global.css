@@ -95,7 +95,7 @@ body{
   filter: blur(0);
 }
 
-.wide{ width: min(980px, 92vw); }
+.wide{ width: min(630px,92vw); }
 
 .h1{
   margin:0;
