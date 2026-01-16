@@ -67,3 +67,118 @@ body {
   font-size: 18px;
   color: var(--muted);
 }
+
+.bg-object{
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(600px 400px at 70% 35%, rgba(255, 190, 200, .45), transparent 60%),
+    radial-gradient(500px 380px at 30% 60%, rgba(180, 230, 255, .55), transparent 60%),
+    radial-gradient(900px 700px at 50% 120%, rgba(255, 255, 255, .9), transparent 55%);
+  filter: blur(0px);
+}
+
+.content, .marquee { position: relative; z-index: 1; }
+
+.heroGrid{
+  display: grid;
+  grid-template-columns: 1.2fr .8fr;
+  gap: 28px;
+  align-items: center;
+}
+.visualCard{
+  height: 380px;
+  border-radius: 24px;
+  background: rgba(255,255,255,.6);
+  border: 1px solid rgba(0,0,0,.06);
+  box-shadow: 0 12px 40px rgba(0,0,0,.06);
+  backdrop-filter: blur(10px);
+  display: grid;
+  place-items: center;
+}
+.visualHint{ color: rgba(0,0,0,.35); font-weight: 600; }
+
+.kicker{
+  display: inline-block;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.75);
+  border: 1px solid rgba(0,0,0,.06);
+  margin-bottom: 14px;
+  font-weight: 700;
+}
+
+.muted{ color: var(--muted); }
+
+.twoCols{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  margin-top: 18px;
+}
+.itemCard{
+  padding: 16px;
+  border-radius: 18px;
+  background: rgba(255,255,255,.7);
+  border: 1px solid rgba(0,0,0,.06);
+  margin: 12px 0;
+}
+.itemTop{
+  display:flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+.bullets{ padding-left: 18px; margin: 18px 0; }
+.offer{
+  margin-top: 18px;
+  font-weight: 700;
+  padding: 14px 16px;
+  border-radius: 16px;
+  background: rgba(215, 38, 61, .08);
+  border: 1px solid rgba(215, 38, 61, .18);
+}
+.cta{ margin-top: 12px; font-weight: 700; }
+
+.formCard{
+  padding: 18px;
+  border-radius: 18px;
+  background: rgba(255,255,255,.8);
+  border: 1px solid rgba(0,0,0,.06);
+  display: grid;
+  gap: 12px;
+}
+.formCard label{ display:grid; gap: 6px; font-weight: 600; }
+.formCard input{
+  height: 44px;
+  border-radius: 12px;
+  border: 1px solid rgba(0,0,0,.10);
+  padding: 0 12px;
+  background: #fff;
+}
+.radioGroup{ display:grid; gap: 8px; margin-top: 8px; }
+.radio{
+  display:flex; gap: 10px; align-items:center;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(0,0,0,.08);
+  background: rgba(255,255,255,.7);
+}
+.btn{
+  height: 46px;
+  border: 0;
+  border-radius: 14px;
+  background: var(--text);
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+}
+.btn:hover{ opacity: .92; }
+
+@media (max-width: 900px){
+  .heroGrid{ grid-template-columns: 1fr; }
+  .twoCols{ grid-template-columns: 1fr; }
+  .visualCard{ height: 280px; }
+}
