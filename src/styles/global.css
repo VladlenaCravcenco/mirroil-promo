@@ -127,7 +127,7 @@ body {
 
 .h1 {
   margin: 0;
-  font-size: clamp(30px, 4.2vw, 55px);
+  font-size: clamp(30px, 4.2vw, 45px);
   line-height: 0.96;
   letter-spacing: -0.03em;
   display: flex;
@@ -142,7 +142,7 @@ body {
 }
 .sub {
   margin: 14px auto 0;
-  max-width: 50ch;
+  max-width: 40ch;
   color: var(--muted);
   font-size: 22px;
   line-height: 1.65;
