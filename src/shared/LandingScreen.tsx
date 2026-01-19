@@ -52,8 +52,8 @@ export function LandingScreen({ bgClassName, marqueeText, hero, offer, catalog, 
             },
             {
                 // центральная “полоса” видимости: как только блок начинает уходить от центра — он гаснет
-                rootMargin: '-40% 0px -40% 0px',
-                threshold: 0.01
+                rootMargin: '-15% 0px -15% 0px',
+                threshold: 0.2
             }
         );
 

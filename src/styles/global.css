@@ -111,7 +111,7 @@ body {
 
   opacity: 0;
   filter: blur(6px);
-  transform: none; /* ВАЖНО: никакого translateY */
+  transform: none; 
   transition:
     opacity 420ms ease,
     filter 420ms ease;
