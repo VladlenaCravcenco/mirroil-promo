@@ -13,12 +13,13 @@ export default function NudeAllure() {
                 subtitle:
                     'Un cadou care se simte din prima clipă. Parfumuri uleioase cu persistenta intensă și un șleif memorabil — pentru ea și pentru el.',
                 pills: [
-                    '🎁 Cadoul ideal de 14 februarie',
+                    
                     '💑 Pentru cuplu sau pentru tine',
-                    '✨ Aromă luxoasă, senzuală, care te definește',
+                    '✨ Aromă luxoasă și senzuală',
                 ],
             }}
             offer={{
+                badge: 'Cadoul ideal de 14 februarie', // ✅ ОБЯЗАТЕЛЬНО
                 title: 'La achiziționarea a 2 parfumuri',
                 price: '850 lei',
                 fromLabel: 'în loc de',
@@ -57,7 +58,11 @@ export default function NudeAllure() {
             }}
             form={{
                 heading: 'Fă un cadou în doar 1 minut',
-                perks: ['✔️ Livrare în Chișinău — gratuită', '✔️ Livrare în Moldova — contra cost', '✔️ Procesare rapidă a comenzii'],
+                perks: [
+                    '✔️ Livrare în Chișinău — gratuită',
+                    '✔️ Livrare în Moldova — contra cost',
+                    '✔️ Procesare rapidă a comenzii',
+                ],
                 options: ['Un parfum', 'Două parfumuri (850 lei)'],
                 submit: 'Trimite cererea',
                 footer: 'Parfume Oil — parfumul care creează emoții și atrage complimente',
