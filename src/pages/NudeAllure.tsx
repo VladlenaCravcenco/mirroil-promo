@@ -6,7 +6,10 @@ export default function NudeAllure() {
             bgClassName="bg--nude-allure"
             marqueeText="❤️ Ofertă specială"
             hero={{
-                title: 'Parfume Oil — parfum pentru ea și pentru el',
+                title: [
+                    'Parfume Oil',
+                    'parfum pentru ea și pentru el',
+                ],
                 subtitle:
                     'Un cadou care se simte din prima clipă. Parfumuri uleioase cu persistenta intensă și un șleif memorabil — pentru ea și pentru el.',
                 pills: [
@@ -16,10 +19,10 @@ export default function NudeAllure() {
                 ],
             }}
             offer={{
-                lines: [
-                    'La achiziționarea a 2 parfumuri',
-                    'doar 850 lei în loc de 1000',
-                ],
+                title: 'La achiziționarea a 2 parfumuri',
+                price: '850 lei',
+                fromLabel: 'în loc de',
+                oldPrice: '1000 lei',
                 button: 'Alege parfumul preferat și lasă o cerere',
             }}
             catalog={{
@@ -27,12 +30,28 @@ export default function NudeAllure() {
                     {
                         title: 'NUDE FANTASY',
                         meta: '15 ml | 500 lei',
-                        text: 'Contrastul perfect între dulceață și senzualitate: deschidere luminos-citrica, inimă florală profundă cu trandafir negru și orhidee vanilată și bază gourmand cu praline, caramel și cafea. Ideal pentru femeia sigură pe sine, pasională și memorabilă.',
+                        lead: 'Dulce + senzual. Floral-gourmand memorabil.',
+                        notes: [
+                            'deschidere citrică luminoasă',
+                            'trandafir negru',
+                            'orhidee vanilată',
+                            'praline & caramel',
+                            'cafea (bază gourmand)',
+                        ],
+                        bestFor: 'pentru femeia sigură pe sine, pasională și memorabilă',
                     },
                     {
                         title: 'ALLURE',
                         meta: '15 ml | 500 lei',
-                        text: 'Parfum fresh sportiv și elegant, cu note citrice proaspete, tonuri aromatice și o bază caldă de moscul și lemn nobil. Perfect pentru fiecare zi când vrei să miroși impecabil fără efort.',
+                        lead: 'Fresh sportiv, curat și elegant.',
+                        notes: [
+                            'citrice proaspete',
+                            'tonuri aromatice',
+                            'mosc cald',
+                            'lemn nobil',
+                            'miros impecabil fără efort',
+                        ],
+                        bestFor: 'pentru fiecare zi — când vrei să miroși bine, simplu și sigur',
                     },
                 ],
             }}

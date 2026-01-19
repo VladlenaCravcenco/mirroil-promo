@@ -1,19 +1,28 @@
 import { useEffect, useMemo } from 'react';
 
-type CatalogCard = { title: string; meta: string; text: string };
+type CatalogCard = {
+    title: string;
+    meta: string;
+    lead: string;        // 1 строка — “вайб”
+    notes: string[];     // 3–4 коротких “ноты”
+    bestFor: string;     // “кому подходит”
+};
 
 type Props = {
     bgClassName: string;
     marqueeText: string;
 
     hero: {
-        title: string;
+        title: string[];
         subtitle: string;
         pills: string[];
     };
 
     offer: {
-        lines: string[];
+        title: string;
+        price: string;
+        fromLabel: string;
+        oldPrice: string;
         button: string;
     };
 
@@ -71,9 +80,12 @@ export function LandingScreen({ bgClassName, marqueeText, hero, offer, catalog, 
 
             <main className="lp__main">
                 {/* Screen 1 */}
-                <section className="screen">
+                <section className="screen screen--hero">
                     <div className="center" data-reveal>
-                        <h1 className="h1">{hero.title}</h1>
+                        <h1 className="h1">
+                            {hero.title[0]}<br />
+                            {hero.title[1]}
+                        </h1>
                         <p className="sub">{hero.subtitle}</p>
 
                         <div className="pillRow">
@@ -88,12 +100,17 @@ export function LandingScreen({ bgClassName, marqueeText, hero, offer, catalog, 
                 <section className="screen">
                     <div className="center" data-reveal>
                         <p className="offerLine">
-                            {offer.lines.map((l, i) => (
-                                <span key={i} className="offerLine__row">
-                                    {l}
-                                </span>
-                            ))}
+                            <span className="offerLine__row offerLine__title">{offer.title}</span>
+
+                            <span className="offerLine__row offerLine__price">
+                                doar {offer.price}
+                            </span>
+
+                            <span className="offerLine__row offerLine__old">
+                                {offer.fromLabel} <span className="offerLine__oldPrice">{offer.oldPrice}</span>
+                            </span>
                         </p>
+
                         <button className="btn" type="button" onClick={goToForm}>
                             {offer.button}
                         </button>
@@ -110,7 +127,24 @@ export function LandingScreen({ bgClassName, marqueeText, hero, offer, catalog, 
                                         <h3 className="cardTitle">{c.title}</h3>
                                         <div className="cardMeta">{c.meta}</div>
                                     </div>
-                                    <p className="cardText">{c.text}</p>
+
+                                    <p className="cardLead">{c.lead}</p>
+
+                                    <div className="chips" aria-label="notes">
+                                        {c.notes.map((n, idx) => (
+                                            <span
+                                                className="chip"
+                                                key={`${c.title}-${idx}`}
+                                                style={{ transitionDelay: `${120 + idx * 90}ms` }}
+                                            >
+                                                {n}
+                                            </span>
+                                        ))}
+                                    </div>
+
+                                    <p className="cardBest">
+                                        <span className="bestLabel">Perfect:</span> {c.bestFor}
+                                    </p>
                                 </article>
                             ))}
                         </div>
