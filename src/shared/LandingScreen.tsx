@@ -50,7 +50,11 @@ export function LandingScreen({ bgClassName, marqueeText, hero, offer, catalog, 
                     else e.target.classList.remove('is-visible');
                 });
             },
-            { threshold: 0.35 }
+            {
+                // центральная “полоса” видимости: как только блок начинает уходить от центра — он гаснет
+                rootMargin: '-40% 0px -40% 0px',
+                threshold: 0.01
+            }
         );
 
         els.forEach((el) => obs.observe(el));

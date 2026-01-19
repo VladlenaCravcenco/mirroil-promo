@@ -108,17 +108,16 @@ body {
   width: min(760px, 58vw);
   text-align: center;
   margin-inline: auto;
+
   opacity: 0;
-  transform: translateY(18px);
-  filter: blur(4px);
+  filter: blur(6px);
+  transform: none; /* ВАЖНО: никакого translateY */
   transition:
-    opacity 0.45s ease,
-    transform 0.45s ease,
-    filter 0.45s ease;
+    opacity 420ms ease,
+    filter 420ms ease;
 }
 .center.is-visible {
   opacity: 1;
-  transform: translateY(0);
   filter: blur(0);
 }
 
@@ -535,7 +534,7 @@ body {
 
   /* Заголовок сверху и читаемый */
   .screen--hero .h1 {
-    display: block;            /* важно: НЕ flex */
+    display: block; /* важно: НЕ flex */
     margin: 10px 0 0;
     font-size: clamp(26px, 9.2vw, 40px);
     line-height: 0.98;
@@ -544,7 +543,7 @@ body {
 
   /* sub уходит вниз (т.к. flex-column) */
   .screen--hero .sub {
-    margin: auto 0 10px;       /* auto сверху = толкает вниз */
+    margin: auto 0 10px; /* auto сверху = толкает вниз */
     width: 100%;
     max-width: none;
 
@@ -553,8 +552,8 @@ body {
     line-height: 1.45;
     color: rgba(20, 20, 20, 0.82);
 
-    background: rgba(255, 255, 255, 0.90);
-    border: 1px solid rgba(20, 20, 20, 0.10);
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(20, 20, 20, 0.1);
     border-radius: 18px;
     backdrop-filter: blur(12px);
     box-shadow: 0 18px 60px rgba(0, 0, 0, 0.16);
@@ -569,8 +568,8 @@ body {
     gap: 10px;
     justify-content: center;
 
-    background: rgba(255, 255, 255, 0.90);
-    border: 1px solid rgba(20, 20, 20, 0.10);
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(20, 20, 20, 0.1);
     border-radius: 18px;
     backdrop-filter: blur(12px);
     box-shadow: 0 18px 60px rgba(0, 0, 0, 0.16);
