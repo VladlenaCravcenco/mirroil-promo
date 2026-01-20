@@ -11,11 +11,11 @@ export default function NudeAllure() {
                     'parfum pentru ea și pentru el',
                 ],
                 subtitle:
-                    'Un cadou care se simte din prima clipă. Parfumuri uleioase cu persistenta intensă și un șleif memorabil — pentru ea și pentru el.',
+                    'Un cadou care se simte din prima clipă.',
                 pills: [
                     
                     '💑 Pentru cuplu sau pentru tine',
-                    '✨ Aromă luxoasă și senzuală',
+                    '✨ Aromă luxoasă',
                 ],
             }}
             offer={{

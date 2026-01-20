@@ -8,9 +8,9 @@ export default function CherryMan() {
             hero={{
                 title: ['Parfume Oil', 'parfum pentru ea și pentru el'],
                 subtitle:
-                    'Un cadou care se simte din prima clipă. Parfumuri uleioase cu persistenta intensă și un șleif memorabil — pentru ea și pentru el.',
+                    'Un cadou care se simte din prima clipă.',
                 // ✅ тут теперь только нижние маленькие плашки (2-3 коротких)
-                pills: ['✨ Aromă luxoasă și senzuală', '💑 Pentru cuplu sau pentru tine'],
+                pills: ['✨ Aromă luxoasă', '💑 Pentru cuplu sau pentru tine'],
             }}
             offer={{
                 // ✅ бейдж сверху (если в LandingScreen он берётся отсюда)

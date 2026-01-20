@@ -142,6 +142,8 @@ body {
   white-space: nowrap;
 }
 
+
+
 /* =========================
    HERO (как на рефе)
    ========================= */
@@ -170,7 +172,7 @@ body {
 /* бейдж */
 .heroBadge{
   display: inline-flex;
-  gap: 10px;
+  gap: 4px;
   align-items: center;
   padding: 10px 14px;
   border-radius: 14px;
@@ -524,7 +526,7 @@ body {
     border-radius: 18px;
   }
 
-  .pill { padding: 9px 10px; font-size: 9px; }
+  .pill { padding: 4px 8px; font-size: 9px; }
 .heroBadge__emoji{
   font-size: 9px;
 }
