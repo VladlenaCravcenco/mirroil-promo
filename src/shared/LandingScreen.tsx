@@ -136,11 +136,7 @@ export function LandingScreen({ bgVideo, marqueeText, hero, offer, catalog, form
 
           {/* CENTER title */}
           <div className="heroCenter" data-reveal>
-            <h1 className="h1">
-              {hero.title[0]}
-              <br />
-              {hero.title[1]}
-            </h1>
+            
           </div>
 
           {/* BOTTOM glass panel */}
