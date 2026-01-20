@@ -1,6 +1,4 @@
-// ✅ Screen 1 — переписан под твой реф (TOP offer + CENTER title + BOTTOM glass panel)
-// ❗️Screen 2 можно удалить полностью — оффер и CTA теперь внутри первого экрана.
-
+// LandingScreen.tsx
 import { useEffect, useMemo } from 'react';
 
 type CatalogCard = {
@@ -12,26 +10,27 @@ type CatalogCard = {
 };
 
 type Props = {
-  
+  // ✅ optional videos (если нет — фон просто не покажется)
   bgVideo?: {
     desktop: string;
     mobile: string;
   };
+
   marqueeText: string;
 
   hero: {
-    title: string[];      // ["Parfume Oil", "parfum pentru ea și pentru el"]
-    subtitle: string;     // описание в нижней плашке
-    pills: string[];      // 2–3 пилсы (лучше 2)
+    title: string[];   // ["Parfume Oil", "parfum pentru ea și pentru el"]
+    subtitle: string;  // текст в нижней плашке
+    pills: string[];   // 2–3 пилсы
   };
 
   offer: {
-    badge: string;        // "Cadoul ideal de 14 februarie"
-    title: string;        // "La achiziționarea a 2 parfumuri"
-    price: string;        // "850 lei"
-    fromLabel: string;    // "în loc de"
-    oldPrice: string;     // "1000 lei"
-    button: string;       // "Alege parfumul preferat și lasă o cerere"
+    badge: string;
+    title: string;
+    price: string;
+    fromLabel: string;
+    oldPrice: string;
+    button: string;
   };
 
   catalog: { cards: CatalogCard[] };
@@ -45,7 +44,7 @@ type Props = {
   };
 };
 
-export function LandingScreen({ marqueeText, hero, offer, catalog, form }: Props) {
+export function LandingScreen({ bgVideo, marqueeText, hero, offer, catalog, form }: Props) {
   useEffect(() => {
     const els = Array.from(document.querySelectorAll<HTMLElement>('[data-reveal]'));
 
@@ -69,7 +68,8 @@ export function LandingScreen({ marqueeText, hero, offer, catalog, form }: Props
     [marqueeText]
   );
 
-  const goToForm = () => document.querySelector('#order')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  const goToForm = () =>
+    document.querySelector('#order')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
   return (
     <div className="lp">
@@ -81,39 +81,46 @@ export function LandingScreen({ marqueeText, hero, offer, catalog, form }: Props
         </div>
       </header>
 
-      <div className="lp__bg lp__bg--video" aria-hidden="true">
-        {/* desktop video */}
-        <video
-          className="bgVideo bgVideo--desktop"
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="auto"
-        >
-          <source src="/hero-desktop-cherry.mp4" type="video/mp4" />
-        </video>
+      {/* ✅ BACKGROUND VIDEO (если передали bgVideo) */}
+      {bgVideo ? (
+        <div className="lp__bg lp__bg--video" aria-hidden="true">
+          {/* desktop video */}
+          <video
+            className="bgVideo bgVideo--desktop"
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+            key={bgVideo.desktop} // ✅ важно: при смене страницы реально меняет видео
+          >
+            <source src={bgVideo.desktop} type="video/mp4" />
+          </video>
 
-        {/* mobile video */}
-        <video
-          className="bgVideo bgVideo--mobile"
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="auto"
-        >
-          <source src="/hero-mobile-cherry.mp4" type="video/mp4" />
-        </video>
-      </div>
+          {/* mobile video */}
+          <video
+            className="bgVideo bgVideo--mobile"
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+            key={bgVideo.mobile} // ✅ важно
+          >
+            <source src={bgVideo.mobile} type="video/mp4" />
+          </video>
+        </div>
+      ) : null}
 
       <main className="lp__main">
-        {/* ✅ Screen 1 (как в рефе) */}
+        {/* ✅ Screen 1 */}
         <section className="screen screen--hero">
-          {/* TOP offer (над флаконами) */}
+          {/* TOP offer */}
           <div className="heroTop" data-reveal>
             <div className="heroBadge pill" aria-label="offer badge">
-              <span className="heroBadge__emoji" aria-hidden="true">🎁</span>
+              <span className="heroBadge__emoji" aria-hidden="true">
+                🎁
+              </span>
               <span className="heroBadge__text">{offer.badge}</span>
             </div>
 
@@ -127,12 +134,16 @@ export function LandingScreen({ marqueeText, hero, offer, catalog, form }: Props
             </div>
           </div>
 
-          {/* CENTER title (без плашек) */}
+          {/* CENTER title */}
           <div className="heroCenter" data-reveal>
-
+            <h1 className="h1">
+              {hero.title[0]}
+              <br />
+              {hero.title[1]}
+            </h1>
           </div>
 
-          {/* BOTTOM glass panel (описание + pills + CTA) */}
+          {/* BOTTOM glass panel */}
           <div className="heroBottom" data-reveal>
             <div className="heroPanel" aria-label="hero panel">
               <div className="heroPanel__head">
@@ -157,7 +168,7 @@ export function LandingScreen({ marqueeText, hero, offer, catalog, form }: Props
           </div>
         </section>
 
-        {/* ✅ Screen 3 (каталог) — оставляем как есть у тебя */}
+        {/* ✅ Screen 3 */}
         <section className="screen">
           <div className="center wide" data-reveal>
             <div className="cards">
@@ -191,7 +202,7 @@ export function LandingScreen({ marqueeText, hero, offer, catalog, form }: Props
           </div>
         </section>
 
-        {/* ✅ Screen 4 (форма) — как было */}
+        {/* ✅ Screen 4 */}
         <section className="screen" id="order">
           <div className="center wide" data-reveal>
             <h2 className="h2">{form.heading}</h2>
