@@ -86,8 +86,45 @@ body {
 }
 
 /* =========================
+   VIDEO BACKGROUND
+   ========================= */
+
+.lp__bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.bgVideo {
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+  /* мягко, без шума */
+  filter: saturate(1.02) contrast(1.02);
+}
+
+.bgVideo--mobile {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .bgVideo--desktop {
+    display: none;
+  }
+  .bgVideo--mobile {
+    display: block;
+  }
+}
+/* =========================
    BACKGROUND LAYER
    ========================= */
+
 .lp__bg {
   position: fixed;
   inset: 0;

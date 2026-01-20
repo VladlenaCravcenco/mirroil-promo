@@ -3,7 +3,11 @@ import { LandingScreen } from '../shared/LandingScreen';
 export default function CherryMan() {
     return (
         <LandingScreen
-            bgClassName="bg--cherry-men"
+            
+            bgVideo={{
+                desktop: "/hero-desktop-cherry.mp4",
+                mobile: "/hero-mobile-cherry.mp4",
+            }}
             marqueeText="❤️ Ofertă specială"
             hero={{
                 title: ['Parfume Oil', 'parfum pentru ea și pentru el'],

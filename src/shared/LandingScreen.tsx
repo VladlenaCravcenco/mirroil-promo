@@ -12,7 +12,11 @@ type CatalogCard = {
 };
 
 type Props = {
-  bgClassName: string;
+  
+  bgVideo?: {
+    desktop: string;
+    mobile: string;
+  };
   marqueeText: string;
 
   hero: {
@@ -41,7 +45,7 @@ type Props = {
   };
 };
 
-export function LandingScreen({ bgClassName, marqueeText, hero, offer, catalog, form }: Props) {
+export function LandingScreen({ marqueeText, hero, offer, catalog, form }: Props) {
   useEffect(() => {
     const els = Array.from(document.querySelectorAll<HTMLElement>('[data-reveal]'));
 
@@ -77,7 +81,31 @@ export function LandingScreen({ bgClassName, marqueeText, hero, offer, catalog, 
         </div>
       </header>
 
-      <div className={`lp__bg ${bgClassName}`} aria-hidden="true" />
+      <div className="lp__bg lp__bg--video" aria-hidden="true">
+        {/* desktop video */}
+        <video
+          className="bgVideo bgVideo--desktop"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+        >
+          <source src="/hero-desktop-cherry.mp4" type="video/mp4" />
+        </video>
+
+        {/* mobile video */}
+        <video
+          className="bgVideo bgVideo--mobile"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+        >
+          <source src="/hero-mobile-cherry.mp4" type="video/mp4" />
+        </video>
+      </div>
 
       <main className="lp__main">
         {/* ✅ Screen 1 (как в рефе) */}
@@ -101,7 +129,7 @@ export function LandingScreen({ bgClassName, marqueeText, hero, offer, catalog, 
 
           {/* CENTER title (без плашек) */}
           <div className="heroCenter" data-reveal>
-            
+
           </div>
 
           {/* BOTTOM glass panel (описание + pills + CTA) */}

@@ -3,7 +3,11 @@ import { LandingScreen } from '../shared/LandingScreen';
 export default function NudeAllure() {
     return (
         <LandingScreen
-            bgClassName="bg--nude-allure"
+            
+            bgVideo={{
+                desktop: "/hero-desktop-nude.mp4",
+                mobile: "/hero-mobile-nude.mp4",
+            }}
             marqueeText="❤️ Ofertă specială"
             hero={{
                 title: [
@@ -13,7 +17,7 @@ export default function NudeAllure() {
                 subtitle:
                     'Un cadou care se simte din prima clipă.',
                 pills: [
-                    
+
                     '💑 Pentru cuplu sau pentru tine',
                     '✨ Aromă luxoasă',
                 ],
