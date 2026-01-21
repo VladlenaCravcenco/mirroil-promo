@@ -13,8 +13,8 @@ type Props = {
   // ✅ optional videos (если нет — фон просто не покажется)
   bgVideo?: {
     desktop: string;
-    mobile: string;
   };
+  bgClass?: string;
 
   marqueeText: string;
 
@@ -46,8 +46,8 @@ type Props = {
 
 type SubmitStatus = 'idle' | 'sending' | 'ok' | 'error';
 
-export function LandingScreen({ bgVideo, marqueeText, hero, offer, catalog, form }: Props) {
-  // ✅ Form state
+export function LandingScreen({ bgVideo, bgClass, marqueeText, hero, offer, catalog, form }: Props) {
+  // ✅ Form stated
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
   const [option, setOption] = useState(form.options?.[0] ?? '');
@@ -150,36 +150,24 @@ export function LandingScreen({ bgVideo, marqueeText, hero, offer, catalog, form
         </div>
       </header>
 
-      {/* ✅ BACKGROUND VIDEO (если передали bgVideo) */}
+      {/* ✅ BACKGROUND: desktop video OR image fallback */}
       {bgVideo ? (
-        <div className="lp__bg lp__bg--video" aria-hidden="true">
-          {/* desktop video */}
+        <div className={`lp__bg ${bgClass || ''}`} aria-hidden="true">
+          {/* DESKTOP VIDEO */}
           <video
-            className="bgVideo bgVideo--desktop"
+            className="bgVideo"
             autoPlay
             muted
             loop
             playsInline
             preload="auto"
-            key={bgVideo.desktop} // ✅ важно: при смене страницы реально меняет видео
           >
-            <source src={bgVideo.desktop} type="video/mp4" />
-          </video>
-
-          {/* mobile video */}
-          <video
-            className="bgVideo bgVideo--mobile"
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="auto"
-            key={bgVideo.mobile} // ✅ важно
-          >
-            <source src={bgVideo.mobile} type="video/mp4" />
+            <source src={bgVideo?.desktop} type="video/mp4" />
           </video>
         </div>
-      ) : null}
+      ) : (
+        <div className={`lp__bg ${bgClass || ''}`} aria-hidden="true" />
+      )}
 
       <main className="lp__main">
         {/* ✅ Screen 1 */}

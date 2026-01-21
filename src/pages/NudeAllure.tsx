@@ -3,11 +3,9 @@ import { LandingScreen } from '../shared/LandingScreen';
 export default function NudeAllure() {
     return (
         <LandingScreen
-            
-            bgVideo={{
-                desktop: "/hero-desktop-nude.mp4",
-                mobile: "/hero-mobile-nude.mp4",
-            }}
+            bgVideo={{ desktop: "/hero-desktop-nude.mp4" }}
+            bgClass="bg--nude-allure"
+
             marqueeText="❤️ Ofertă specială"
             hero={{
                 title: [
