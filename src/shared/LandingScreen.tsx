@@ -1,5 +1,5 @@
 // LandingScreen.tsx
-import { useEffect, useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
 type CatalogCard = {
   title: string;
@@ -44,7 +44,16 @@ type Props = {
   };
 };
 
+type SubmitStatus = 'idle' | 'sending' | 'ok' | 'error';
+
 export function LandingScreen({ bgVideo, marqueeText, hero, offer, catalog, form }: Props) {
+  // ✅ Form state
+  const [name, setName] = useState('');
+  const [phone, setPhone] = useState('');
+  const [option, setOption] = useState(form.options?.[0] ?? '');
+  const [status, setStatus] = useState<SubmitStatus>('idle');
+  const [errorMsg, setErrorMsg] = useState<string>('');
+
   useEffect(() => {
     const els = Array.from(document.querySelectorAll<HTMLElement>('[data-reveal]'));
 
@@ -70,6 +79,66 @@ export function LandingScreen({ bgVideo, marqueeText, hero, offer, catalog, form
 
   const goToForm = () =>
     document.querySelector('#order')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+  const normalizePhone = (v: string) => v.replace(/\s+/g, '').trim();
+
+  const validate = () => {
+    const n = name.trim();
+    const p = normalizePhone(phone);
+
+    if (!n) return 'Scrie numele, te rog.';
+    if (!p) return 'Scrie numărul de telefon, te rog.';
+
+    // простая проверка (без жёсткой страны):
+    // +373xxxxxxxx или просто цифры длиной >= 7
+    const digits = p.replace(/[^\d]/g, '');
+    if (digits.length < 7) return 'Numărul de telefon pare prea scurt.';
+
+    return '';
+  };
+
+  const submitLead = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setErrorMsg('');
+
+    const v = validate();
+    if (v) {
+      setStatus('error');
+      setErrorMsg(v);
+      return;
+    }
+
+    setStatus('sending');
+
+    try {
+      const res = await fetch('/api/lead', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: name.trim(),
+          phone: normalizePhone(phone),
+          option,
+          pageUrl: window.location.href,
+        }),
+      });
+
+      const data = await res.json().catch(() => null);
+
+      if (!res.ok || !data?.ok) {
+        throw new Error(data?.error || 'Request failed');
+      }
+
+      setStatus('ok');
+      setName('');
+      setPhone('');
+      setOption(form.options?.[0] ?? '');
+    } catch (err) {
+      setStatus('error');
+      setErrorMsg('Eroare la trimitere. Încearcă din nou.');
+      // для дебага:
+      // console.error(err);
+    }
+  };
 
   return (
     <div className="lp">
@@ -136,7 +205,7 @@ export function LandingScreen({ bgVideo, marqueeText, hero, offer, catalog, form
 
           {/* CENTER title */}
           <div className="heroCenter" data-reveal>
-            
+            {/* (оставила пустым, как у тебя) */}
           </div>
 
           {/* BOTTOM glass panel */}
@@ -211,31 +280,62 @@ export function LandingScreen({ bgVideo, marqueeText, hero, offer, catalog, form
               ))}
             </ul>
 
-            <form className="form" onSubmit={(e) => e.preventDefault()}>
+            {/* ✅ теперь submit реально шлет на /api/lead */}
+            <form className="form" onSubmit={submitLead}>
               <label className="field">
                 Nume
-                <input className="input" placeholder="Numele tău" />
+                <input
+                  className="input"
+                  placeholder="Numele tău"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  required
+                />
               </label>
 
               <label className="field">
                 Număr de telefon
-                <input className="input" placeholder="+373 ..." />
+                <input
+                  className="input"
+                  placeholder="+373 ..."
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
+                  required
+                />
               </label>
 
               <div className="options">
                 {form.options.map((o) => (
                   <label className="opt" key={o}>
-                    <input type="radio" name="opt" />
+                    <input
+                      type="radio"
+                      name="opt"
+                      checked={option === o}
+                      onChange={() => setOption(o)}
+                    />
                     <span>{o}</span>
                   </label>
                 ))}
               </div>
 
-              <button className="btn btn--full" type="submit">
-                {form.submit}
+              <button className="btn btn--full" type="submit" disabled={status === 'sending'}>
+                {status === 'sending' ? 'Se trimite...' : form.submit}
               </button>
 
               <p className="footer">{form.footer}</p>
+
+              {/* ✅ статус */}
+              {status === 'ok' && (
+                <p style={{ marginTop: 12 }}>
+                  ✅ Cererea a fost trimisă. Te contactăm în curând.
+                </p>
+              )}
+
+              {status === 'error' && (
+                <p style={{ marginTop: 12 }}>
+                  ❌ {errorMsg || 'Eroare. Încearcă din nou.'}
+                </p>
+              )}
             </form>
           </div>
         </section>
