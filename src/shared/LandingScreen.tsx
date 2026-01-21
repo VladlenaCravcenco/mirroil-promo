@@ -128,15 +128,20 @@ export function LandingScreen({ bgVideo, bgClass, marqueeText, hero, offer, cata
         throw new Error(data?.error || 'Request failed');
       }
 
+      // ✅ чистим
       setStatus('ok');
       setName('');
       setPhone('');
       setOption(form.options?.[0] ?? '');
+
+      // ✅ небольшой таймаут, чтобы React успел отрендерить статус
+      setTimeout(() => {
+        window.location.assign('/thanks');
+      }, 150);
+
     } catch (err) {
       setStatus('error');
       setErrorMsg('Eroare la trimitere. Încearcă din nou.');
-      // для дебага:
-      // console.error(err);
     }
   };
 
