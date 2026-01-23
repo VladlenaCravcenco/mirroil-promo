@@ -1,21 +1,28 @@
 import { useEffect } from 'react';
 
+declare global {
+  interface Window {
+    fbq?: (...args: unknown[]) => void;
+  }
+}
+
 export default function Thanks() {
   useEffect(() => {
-    // ✅ Meta Lead — только тут
-    if (typeof window !== 'undefined' && (window as any).fbq) {
-      (window as any).fbq('track', 'Lead');
+    if (typeof window !== 'undefined' && window.fbq) {
+      window.fbq('track', 'Lead');
     }
   }, []);
 
   return (
-    <div style={{
-      minHeight: '100vh',
-      display: 'grid',
-      placeItems: 'center',
-      textAlign: 'center',
-      padding: 24
-    }}>
+    <div
+      style={{
+        minHeight: '100vh',
+        display: 'grid',
+        placeItems: 'center',
+        textAlign: 'center',
+        padding: 24,
+      }}
+    >
       <div>
         <h1>Mulțumim! ❤️</h1>
         <p>Cererea ta a fost trimisă cu succes.</p>

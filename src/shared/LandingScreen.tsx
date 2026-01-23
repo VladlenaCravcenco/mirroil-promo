@@ -139,7 +139,7 @@ export function LandingScreen({ bgVideo, bgClass, marqueeText, hero, offer, cata
         window.location.assign('/thanks');
       }, 150);
 
-    } catch (err) {
+    } catch {
       setStatus('error');
       setErrorMsg('Eroare la trimitere. Încearcă din nou.');
     }
