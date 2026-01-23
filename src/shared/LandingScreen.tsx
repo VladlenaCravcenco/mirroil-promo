@@ -180,9 +180,7 @@ export function LandingScreen({ bgVideo, bgClass, marqueeText, hero, offer, cata
           {/* TOP offer */}
           <div className="heroTop" data-reveal>
             <div className="heroBadge pill" aria-label="offer badge">
-              <span className="heroBadge__emoji" aria-hidden="true">
-                🎁
-              </span>
+              
               <span className="heroBadge__text">{offer.badge}</span>
             </div>
 

@@ -6,7 +6,7 @@ export default function NudeAllure() {
             bgVideo={{ desktop: "/hero-desktop-nude.mp4" }}
             bgClass="bg--nude-allure"
 
-            marqueeText="❤️ Ofertă specială"
+            marqueeText="Ofertă specială"
             hero={{
                 title: [
                     'Parfume Oil',
@@ -16,8 +16,8 @@ export default function NudeAllure() {
                     'Un cadou care se simte din prima clipă.',
                 pills: [
 
-                    '💑 Pentru cuplu sau pentru tine',
-                    '✨ Aromă luxoasă',
+                    'Pentru cuplu sau pentru tine',
+                    'Aromă luxoasă',
                 ],
             }}
             offer={{

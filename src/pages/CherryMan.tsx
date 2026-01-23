@@ -6,13 +6,13 @@ export default function CherryMan() {
 
             bgVideo={{ desktop: "/hero-desktop-cherry.mp4" }}
             bgClass="bg--cherry-men"
-            marqueeText="❤️ Ofertă specială"
+            marqueeText="Ofertă specială"
             hero={{
                 title: ['Parfume Oil', 'parfum pentru ea și pentru el'],
                 subtitle:
                     'Un cadou care se simte din prima clipă.',
                 // ✅ тут теперь только нижние маленькие плашки (2-3 коротких)
-                pills: ['✨ Aromă luxoasă', '💑 Pentru cuplu sau pentru tine'],
+                pills: ['Aromă luxoasă', 'Pentru cuplu sau pentru tine'],
             }}
             offer={{
                 // ✅ бейдж сверху (если в LandingScreen он берётся отсюда)
