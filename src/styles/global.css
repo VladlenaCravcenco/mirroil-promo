@@ -142,9 +142,10 @@ body {
 .screen:not(.screen--hero) {
   position: relative;
   z-index: 2; /* поверх hero и видео */
-  background: #fdfdfd; /* любой фон */
+  background: rgba(242, 231, 231, 0.85);
   min-height: 100vh;   /* чтобы занимали весь экран */
   padding: 96px 20px 56px;
+  backdrop-filter: blur(4px);
 }
 
 .center {
