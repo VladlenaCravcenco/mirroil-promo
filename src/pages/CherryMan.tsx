@@ -26,18 +26,22 @@ export default function CherryMan() {
             catalog={{
                 cards: [
                     {
+                        image: '/cherry-woman.png',
+                         alt: 'Parfumul CHERRY pentru femei',
                         title: 'CHERRY',
                         meta: '15 ml | 500 lei',
-                        lead: 'Fructat, seducător, dulce-cremos.',
+                        lead: 'Fructat și dulce-cremos.',
                         notes: ['vișine', 'marshmallow', 'vanilie', 'gardenie', 'lemnoasă caldă'],
-                        bestFor: 'Pentru femeia energică, jucăușă și feminină.',
+                        bestFor: 'Pentru femeia energică.',
                     },
                     {
+                        image: '/men-men.png',
+                        alt: 'Parfumul MEN pentru bărbați',
                         title: 'MEN',
                         meta: '15 ml | 500 lei',
-                        lead: 'Fresh oceanic, modern, sigur pe sine.',
+                        lead: 'Fresh oceanic și modern.',
                         notes: ['yuzu', 'grepfrut', 'inimă marină', 'bază masculin-lemnoasă'],
-                        bestFor: 'Pentru bărbatul liber și activ.',
+                        bestFor: 'Pentru bărbatul liber.',
                     },
                 ],
             }}

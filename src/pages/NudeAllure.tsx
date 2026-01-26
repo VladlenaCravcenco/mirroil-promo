@@ -31,9 +31,11 @@ export default function NudeAllure() {
             catalog={{
                 cards: [
                     {
+                        image: '/nude-woman.png',
+                        alt: 'Parfumul NUDE FANTASY pentru femei',
                         title: 'NUDE FANTASY',
                         meta: '15 ml | 500 lei',
-                        lead: 'Dulce + senzual. Floral-gourmand memorabil.',
+                        lead: 'Floral-gourmand memorabil.',
                         notes: [
                             'citrică luminoasă',
                             'trandafir negru',
@@ -41,12 +43,14 @@ export default function NudeAllure() {
                             'praline',
                             'cafea',
                         ],
-                        bestFor: 'pentru femeia sigură pe sine, pasională și memorabilă',
+                        bestFor: 'pentru femeia sigură pe sine.',
                     },
                     {
+                        image: '/allure-men.png',
+                        alt: 'Parfumul ALLURE pentru bărbați',
                         title: 'ALLURE',
                         meta: '15 ml | 500 lei',
-                        lead: 'Fresh sportiv, curat și elegant.',
+                        lead: 'Fresh și sportiv.',
                         notes: [
                             'citrice proaspete',
                             'tonuri aromatice',
@@ -54,7 +58,7 @@ export default function NudeAllure() {
                             'lemn nobil',
                             'miros impecabil fără efort',
                         ],
-                        bestFor: 'pentru fiecare zi — când vrei să miroși bine, simplu și sigur',
+                        bestFor: 'pentru fiecare zi — când vrei să miroși bine.',
                     },
                 ],
             }}

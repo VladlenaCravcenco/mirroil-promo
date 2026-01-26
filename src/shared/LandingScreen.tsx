@@ -2,6 +2,8 @@
 import { useEffect, useMemo, useState } from 'react';
 
 type CatalogCard = {
+  image: string;
+  alt?: string; // ✅ alt как опциональный
   title: string;
   meta: string;
   lead: string;
@@ -180,7 +182,7 @@ export function LandingScreen({ bgVideo, bgClass, marqueeText, hero, offer, cata
           {/* TOP offer */}
           <div className="heroTop" data-reveal>
             <div className="heroBadge pill" aria-label="offer badge">
-              
+
               <span className="heroBadge__text">{offer.badge}</span>
             </div>
 
@@ -229,29 +231,38 @@ export function LandingScreen({ bgVideo, bgClass, marqueeText, hero, offer, cata
           <div className="center wide" data-reveal>
             <div className="cards">
               {catalog.cards.map((c) => (
-                <article className="card" key={c.title}>
-                  <div className="cardTop">
-                    <h3 className="cardTitle">{c.title}</h3>
-                    <div className="cardMeta">{c.meta}</div>
+                <article className="card card--horizontal" key={c.title}>
+
+                  {/* LEFT — image (20%) */}
+                  <div className="cardImage">
+                    <img src={c.image} alt={c.title} />
                   </div>
 
-                  <p className="cardLead">{c.lead}</p>
+                  {/* RIGHT — content (80%) */}
+                  <div className="cardBody">
+                    <div className="cardTop">
+                      <h3 className="cardTitle">{c.title}</h3>
+                      <div className="cardMeta">{c.meta}</div>
+                    </div>
 
-                  <div className="chips" aria-label="notes">
-                    {c.notes.map((n, idx) => (
-                      <span
-                        className="chip"
-                        key={`${c.title}-${idx}`}
-                        style={{ transitionDelay: `${120 + idx * 90}ms` }}
-                      >
-                        {n}
-                      </span>
-                    ))}
+                    <p className="cardLead">{c.lead}</p>
+
+                    <div className="chips" aria-label="notes">
+                      {c.notes.map((n, idx) => (
+                        <span
+                          className="chip"
+                          key={`${c.title}-${idx}`}
+                          style={{ transitionDelay: `${120 + idx * 90}ms` }}
+                        >
+                          {n}
+                        </span>
+                      ))}
+                    </div>
+
+                    <p className="cardBest">
+                      <span className="bestLabel">Perfect:</span> {c.bestFor}
+                    </p>
                   </div>
-
-                  <p className="cardBest">
-                    <span className="bestLabel">Perfect:</span> {c.bestFor}
-                  </p>
                 </article>
               ))}
             </div>
